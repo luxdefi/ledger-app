@@ -31,7 +31,7 @@ const ASSETCALL_FIXED_DATA_WIDTH: usize = 20 + 32 + 32;
 const AMOUNT_SIZE: usize = u256::BITS as usize / 8;
 
 /// An asset call according to the documentation
-/// in https://docs.avax.network/specs/coreth-arc20s
+/// in https://docs.lux.network/specs/coreth-arc20s
 #[derive(Clone, Copy, PartialEq, Eq)]
 #[cfg_attr(any(test, feature = "derive-debug"), derive(Debug))]
 pub struct AssetCall<'b> {

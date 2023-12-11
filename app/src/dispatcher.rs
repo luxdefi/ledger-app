@@ -32,7 +32,7 @@ use crate::handlers::{
 #[cfg(feature = "erc721")]
 use crate::handlers::eth::provide_nft_info::Info as NftProvider;
 
-use crate::handlers::avax::{
+use crate::handlers::lux::{
     message::Sign as LuxSignMsg, sign_hash::Sign as SignHash, signing::Sign as LuxSign,
 };
 

@@ -16,7 +16,7 @@
 use crate::{
     handlers::handle_ui_message,
     parser::{
-        error::ParserError, nano_avax_to_fp_str, timestamp_to_str_date, Address, DisplayableItem,
+        error::ParserError, nano_lux_to_fp_str, timestamp_to_str_date, Address, DisplayableItem,
         FromBytes, Output, OutputType, SECPOutputOwners, SECPTransferOutput,
         FORMATTED_STR_DATE_LEN,
     },
@@ -170,19 +170,19 @@ impl<'b> DisplayableItem for PvmOutput<'b> {
                 let t = pic_str!(b"Funds locked");
                 title[..t.len()].copy_from_slice(t);
 
-                let avax_until = PIC::new(LUX_UNTIL).into_inner();
+                let lux_until = PIC::new(LUX_UNTIL).into_inner();
                 let mut content = [0; LUX_UNTIL.len()
                     + FORMATTED_STR_DATE_LEN
                     + u64::FORMATTED_SIZE_DECIMAL
                     + 2];
                 // write the amount
                 let amount = self.amount().ok_or(ViewError::Unknown)?;
-                let num_len = nano_avax_to_fp_str(amount, &mut content[..])
+                let num_len = nano_lux_to_fp_str(amount, &mut content[..])
                     .map_err(|_| ViewError::Unknown)?
                     .len();
-                // write avax until
-                let mut total_len = num_len + avax_until.len();
-                content[num_len..total_len].copy_from_slice(avax_until);
+                // write lux until
+                let mut total_len = num_len + lux_until.len();
+                content[num_len..total_len].copy_from_slice(lux_until);
                 // finally, write the date
                 let locktime = self.locktime.ok_or(ViewError::NoData)?;
                 let date_str = timestamp_to_str_date(locktime).map_err(|_| ViewError::Unknown)?;

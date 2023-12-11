@@ -22,7 +22,7 @@ use crate::{
     checked_add,
     handlers::handle_ui_message,
     parser::{
-        nano_avax_to_fp_str, BaseTxFields, DisplayableItem, FromBytes, Header, ParserError,
+        nano_lux_to_fp_str, BaseTxFields, DisplayableItem, FromBytes, Header, ParserError,
         PvmOutput, SECPOutputOwners, PVM_CREATE_SUBNET,
     },
 };
@@ -127,7 +127,7 @@ impl<'b> DisplayableItem for CreateSubnetTx<'b> {
                     let mut buffer = [0; u64::FORMATTED_SIZE_DECIMAL + 2];
                     let fee = self.fee().map_err(|_| ViewError::Unknown)?;
                     let fee_buff =
-                        nano_avax_to_fp_str(fee, &mut buffer[..]).map_err(|_| ViewError::Unknown)?;
+                        nano_lux_to_fp_str(fee, &mut buffer[..]).map_err(|_| ViewError::Unknown)?;
 
                     handle_ui_message(fee_buff, message, page)
                 }

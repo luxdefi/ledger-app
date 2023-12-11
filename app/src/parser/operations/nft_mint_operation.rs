@@ -34,7 +34,7 @@ pub struct NFTMintOperation<'b> {
     // It turns out that the fields this operation contains
     // are the same as the ones in the NFTTransferOutput
     // type, which makes sense considering the notion
-    // of inheritance the avax design follows.
+    // of inheritance the lux design follows.
     // This makes this, type very similar to the NFTTransferOperation, for
     // which the documentations says that it "extends" an untyped
     // nft_transfer_output.

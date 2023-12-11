@@ -96,7 +96,7 @@ The general structure of commands and responses is as follows:
 
 #### Command
 
-If the HRPLen is 0, then the default HRP of 'avax' is used.
+If the HRPLen is 0, then the default HRP of 'lux' is used.
 If the ChainIDLen is 0, then the default ChainID of 32 zero bytes (P-Chain's)
 
 | Field      | Type              | Content                   | Expected                 |
@@ -132,7 +132,7 @@ If the ChainIDLen is 0, then the default ChainID of 32 zero bytes (P-Chain's)
 
 #### Command
 
-If the HRPLen is 0, then the default HRP of 'avax' is used.
+If the HRPLen is 0, then the default HRP of 'lux' is used.
 If the ChainIDLen is 0, then the default ChainID of 32 zero bytes (P-Chain's)
 
 | Field      | Type              | Content                   | Expected                 |
@@ -285,8 +285,8 @@ storing the confirmed hash for signing later via [INS_SIGN_HASH], skipping the "
 
 ## INS_SIGN_MSG
 
-Used to sign an avax personal message. 
-The payload should include the header, please see the avax docs for more information. 
+Used to sign an lux personal message. 
+The payload should include the header, please see the lux docs for more information. 
 Uses the protocol to upload a large payload with multiple messages.
 
 #### Command

@@ -11,7 +11,7 @@ const BTC_TX = Buffer.from(
   "base64"
 )
 
-async function get_avax_address(app) {
+async function get_lux_address(app) {
     const resp = await app.getAddressAndPubKey(APP_DERIVATION, true)
 
     console.log(resp)
@@ -46,7 +46,7 @@ async function main() {
     });
     const app = new LuxApp.default(transport);
 
-    // await get_avax_address(app)
+    // await get_lux_address(app)
     await btc_tx(app)
 
 }

@@ -27,7 +27,7 @@ use crate::{
     constants::chain_alias_lookup,
     handlers::handle_ui_message,
     parser::{
-        nano_avax_to_fp_str, ChainId, DisplayableItem, FromBytes, Header, ObjectList, OutputIdx,
+        nano_lux_to_fp_str, ChainId, DisplayableItem, FromBytes, Header, ObjectList, OutputIdx,
         ParserError, TransferableOutput, BLOCKCHAIN_ID_LEN, EVM_EXPORT_TX, MAX_ADDRESS_ENCODED_LEN,
     },
 };
@@ -153,7 +153,7 @@ impl<'b> ExportTx<'b> {
         if out_str.len() < u64::FORMATTED_SIZE_DECIMAL + 2 {
             return Err(ParserError::UnexpectedBufferEnd);
         }
-        nano_avax_to_fp_str(fee, out_str)
+        nano_lux_to_fp_str(fee, out_str)
     }
 
     fn sum_inputs_amount(&self) -> Result<u64, ParserError> {
@@ -257,7 +257,7 @@ impl<'b> ExportTx<'b> {
                 // render amount
                 obj.render_item(0, title, message, page)
             }
-            // address rendering, according to avax team 99.99% of transactions only comes with one
+            // address rendering, according to lux team 99.99% of transactions only comes with one
             // address, but we support rendering any
             x @ 1.. if x < num_inner_items => {
                 // get the address index

@@ -46,7 +46,7 @@ pub const fn cb58_output_len<const I: usize>() -> usize {
     (I * 14) / 10 + CB58_CHECKSUM_LEN + 2
 }
 
-pub fn nano_avax_to_fp_str(value: u64, out_str: &mut [u8]) -> Result<&mut [u8], ParserError> {
+pub fn nano_lux_to_fp_str(value: u64, out_str: &mut [u8]) -> Result<&mut [u8], ParserError> {
     // the number plus '0.'
     if out_str.len() < u64::FORMATTED_SIZE_DECIMAL + 2 {
         return Err(ParserError::UnexpectedBufferEnd);

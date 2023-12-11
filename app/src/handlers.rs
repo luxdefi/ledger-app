@@ -13,7 +13,7 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 ********************************************************************************/
-pub mod avax;
+pub mod lux;
 pub mod public_key;
 pub mod version;
 pub mod wallet_id;
@@ -88,20 +88,20 @@ pub mod resources {
         ERC721Parser,
     }
 
-    impl From<super::avax::signing::Sign> for BUFFERAccessors {
-        fn from(_: super::avax::signing::Sign) -> Self {
+    impl From<super::lux::signing::Sign> for BUFFERAccessors {
+        fn from(_: super::lux::signing::Sign) -> Self {
             Self::Sign
         }
     }
 
-    impl From<super::avax::message::Sign> for BUFFERAccessors {
-        fn from(_: super::avax::message::Sign) -> Self {
+    impl From<super::lux::message::Sign> for BUFFERAccessors {
+        fn from(_: super::lux::message::Sign) -> Self {
             Self::SignMsg
         }
     }
 
-    impl From<super::avax::sign_hash::Sign> for BUFFERAccessors {
-        fn from(_: super::avax::sign_hash::Sign) -> Self {
+    impl From<super::lux::sign_hash::Sign> for BUFFERAccessors {
+        fn from(_: super::lux::sign_hash::Sign) -> Self {
             Self::SignHash
         }
     }
@@ -150,14 +150,14 @@ pub mod resources {
         }
     }
 
-    impl From<super::avax::signing::Sign> for PATHAccessors {
-        fn from(_: super::avax::signing::Sign) -> Self {
+    impl From<super::lux::signing::Sign> for PATHAccessors {
+        fn from(_: super::lux::signing::Sign) -> Self {
             Self::Sign
         }
     }
 
-    impl From<super::avax::message::Sign> for PATHAccessors {
-        fn from(_: super::avax::message::Sign) -> Self {
+    impl From<super::lux::message::Sign> for PATHAccessors {
+        fn from(_: super::lux::message::Sign) -> Self {
             Self::SignMsg
         }
     }
@@ -174,8 +174,8 @@ pub mod resources {
         }
     }
 
-    impl From<super::avax::sign_hash::Sign> for PATHAccessors {
-        fn from(_: super::avax::sign_hash::Sign) -> Self {
+    impl From<super::lux::sign_hash::Sign> for PATHAccessors {
+        fn from(_: super::lux::sign_hash::Sign) -> Self {
             Self::SignHash
         }
     }
@@ -186,20 +186,20 @@ pub mod resources {
         }
     }
 
-    impl From<super::avax::signing::Sign> for HASHAccessors {
-        fn from(_: super::avax::signing::Sign) -> Self {
+    impl From<super::lux::signing::Sign> for HASHAccessors {
+        fn from(_: super::lux::signing::Sign) -> Self {
             Self::Sign
         }
     }
 
-    impl From<super::avax::message::Sign> for HASHAccessors {
-        fn from(_: super::avax::message::Sign) -> Self {
+    impl From<super::lux::message::Sign> for HASHAccessors {
+        fn from(_: super::lux::message::Sign) -> Self {
             Self::SignMsg
         }
     }
 
-    impl From<super::avax::sign_hash::Sign> for HASHAccessors {
-        fn from(_: super::avax::sign_hash::Sign) -> Self {
+    impl From<super::lux::sign_hash::Sign> for HASHAccessors {
+        fn from(_: super::lux::sign_hash::Sign) -> Self {
             Self::SignHash
         }
     }

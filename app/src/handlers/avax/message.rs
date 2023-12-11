@@ -23,7 +23,7 @@ use crate::{
     constants::{ApduError as Error, BIP32_PATH_PREFIX_DEPTH},
     dispatcher::ApduHandler,
     handlers::{
-        avax::sign_hash::Sign as SignHash,
+        lux::sign_hash::Sign as SignHash,
         resources::{HASH, PATH},
     },
     parser::{LuxMessage, DisplayableItem},
@@ -34,7 +34,7 @@ use crate::{
 pub struct Sign;
 
 impl Sign {
-    // For avax signing which includes P, C, X chains,
+    // For lux signing which includes P, C, X chains,
     // sha256 is used
     pub const SIGN_HASH_SIZE: usize = Sha256::DIGEST_LEN;
 

@@ -45,7 +45,7 @@ describe.each(models)('Standard [%s] - pubkey', function (m) {
         expect(resp).toHaveProperty('hash')
         expect(resp).toHaveProperty('address')
         expect(resp.publicKey.toString('hex')).toEqual(EXPECTED_PUBLIC_KEY)
-        expect(resp.address).toEqual('P-avax1tlq4m9js4ckqvz9umfz7tjxna3yysm79r2jz8e')
+        expect(resp.address).toEqual('P-lux1tlq4m9js4ckqvz9umfz7tjxna3yysm79r2jz8e')
       } finally {
         await sim.close()
       }

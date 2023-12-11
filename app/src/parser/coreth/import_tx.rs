@@ -27,7 +27,7 @@ use crate::{
     constants::chain_alias_lookup,
     handlers::handle_ui_message,
     parser::{
-        coreth::outputs::EVMOutput, nano_avax_to_fp_str, ChainId, DisplayableItem, FromBytes,
+        coreth::outputs::EVMOutput, nano_lux_to_fp_str, ChainId, DisplayableItem, FromBytes,
         Header, ObjectList, OutputIdx, ParserError, TransferableInput, BLOCKCHAIN_ID_LEN,
         EVM_IMPORT_TX,
     },
@@ -144,7 +144,7 @@ impl<'b> ImportTx<'b> {
             return Err(ParserError::UnexpectedBufferEnd);
         }
 
-        nano_avax_to_fp_str(fee, out_str)
+        nano_lux_to_fp_str(fee, out_str)
     }
 
     fn sum_inputs_amount(&self) -> Result<u64, ParserError> {

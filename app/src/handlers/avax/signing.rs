@@ -28,7 +28,7 @@ use crate::{
     },
     dispatcher::ApduHandler,
     handlers::{
-        avax::sign_hash::Sign as SignHash,
+        lux::sign_hash::Sign as SignHash,
         resources::{HASH, PATH},
     },
     parser::{DisplayableItem, ObjectList, ParserError, PathWrapper, Transaction},
@@ -39,7 +39,7 @@ use crate::{
 pub struct Sign;
 
 impl Sign {
-    // For avax transactions which includes P, C, X chains,
+    // For lux transactions which includes P, C, X chains,
     // sha256 is used
     pub const SIGN_HASH_SIZE: usize = Sha256::DIGEST_LEN;
 

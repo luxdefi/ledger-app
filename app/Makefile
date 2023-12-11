@@ -264,7 +264,7 @@ ifeq ($(FEATURE_BTC), 1)
 		DEFINES   += BIP32_PUBKEY_VERSION=0x0488B21E
 
 		# The coin type bellow is not part of the btc app,
-		# but this is necesary here as avax wants support for
+		# but this is necesary here as lux wants support for
 		# coin_type = 60'
 		DEFINES   += BIP44_COIN_TYPE_3=60
 		DEFINES   += COIN_P2PKH_VERSION=0

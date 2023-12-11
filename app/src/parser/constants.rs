@@ -21,7 +21,7 @@ pub const NETWORK_ID_LOCAL: u32 = 12345;
 pub const NETWORK_ID_CUSTOM: u32 = 1337;
 
 // hrp
-pub const HRP_MAINNET: &str = "avax";
+pub const HRP_MAINNET: &str = "lux";
 pub const HRP_TESTNET: &str = "fuji";
 pub const HRP_LOCAL: &str = "local";
 pub const HRP_CUSTOM: &str = "custom";

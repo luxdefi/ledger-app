@@ -27,7 +27,7 @@ use crate::{
     checked_add,
     handlers::handle_ui_message,
     parser::{
-        intstr_to_fpstr_inplace, nano_avax_to_fp_str, u32_to_str, AssetId, BaseTxFields,
+        intstr_to_fpstr_inplace, nano_lux_to_fp_str, u32_to_str, AssetId, BaseTxFields,
         DisplayableItem, FromBytes, Header, ParserError, PvmOutput, SubnetAuth, SubnetId,
         DELEGATION_FEE_DIGITS, PVM_TRANSFORM_SUBNET,
     },
@@ -321,7 +321,7 @@ impl<'b> DisplayableItem for TransformSubnetTx<'b> {
 
                 let mut buffer = [0; u64::FORMATTED_SIZE_DECIMAL + 2];
                 let fee_buff =
-                    nano_avax_to_fp_str(fee, &mut buffer[..]).map_err(|_| ViewError::Unknown)?;
+                    nano_lux_to_fp_str(fee, &mut buffer[..]).map_err(|_| ViewError::Unknown)?;
                 handle_ui_message(fee_buff, message, page)
             }
             4..=15 if expert => self.render_expert(item_n - 4, title, message, page),

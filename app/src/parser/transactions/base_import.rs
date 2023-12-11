@@ -183,7 +183,7 @@ where
                 // render amount
                 obj.render_item(0, title, message, page)
             }
-            // address rendering, according to avax team 99.99% of transactions only comes with one
+            // address rendering, according to lux team 99.99% of transactions only comes with one
             // address, but we support rendering any
             x @ 1.. if x < num_inner_items => {
                 // get the address index

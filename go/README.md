@@ -1,6 +1,6 @@
 # ledger-lux-go
 
-[![Test](https://github.com/ava-labs/ledger-lux/actions/workflows/test.yml/badge.svg)](https://github.com/ava-labs/ledger-lux/actions/workflows/test.yml)
+[![Test](https://github.com/luxdefi/ledger-lux/actions/workflows/test.yml/badge.svg)](https://github.com/luxdefi/ledger-lux/actions/workflows/test.yml)
 
 ---
 

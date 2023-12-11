@@ -20,7 +20,7 @@ use nom::bytes::complete::tag;
 use crate::{
     handlers::handle_ui_message,
     parser::{
-        nano_avax_to_fp_str, BaseTxFields, DisplayableItem, FromBytes, Header, ParserError,
+        nano_lux_to_fp_str, BaseTxFields, DisplayableItem, FromBytes, Header, ParserError,
         PvmOutput, SubnetAuth, SubnetId, PVM_REMOVE_SUBNET_VALIDATOR,
     },
 };
@@ -116,7 +116,7 @@ impl<'b> DisplayableItem for RemoveSubnetValidatorTx<'b> {
 
                 let mut buffer = [0; u64::FORMATTED_SIZE_DECIMAL + 2];
                 let fee_buff =
-                    nano_avax_to_fp_str(fee, &mut buffer[..]).map_err(|_| ViewError::Unknown)?;
+                    nano_lux_to_fp_str(fee, &mut buffer[..]).map_err(|_| ViewError::Unknown)?;
                 handle_ui_message(fee_buff, message, page)
             }
             _ => Err(ViewError::NoData),

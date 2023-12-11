@@ -89,7 +89,7 @@ func Test_UserGetPublicKey(t *testing.T) {
 		"Public key hash has wrong length: %x, expected length: %x\n", addr.Hash, 40)
 	fmt.Printf("HASH: %x\n", addr.Hash)
 
-	assert.Equal(t, len("P-avax1tlq4m9js4ckqvz9umfz7tjxna3yysm79r2jz8e"),
+	assert.Equal(t, len("P-lux1tlq4m9js4ckqvz9umfz7tjxna3yysm79r2jz8e"),
 		len(addr.Address),
 		"Address has wrong length: %x, expected length: %x\n", addr.Address, 43)
 	fmt.Printf("ADDRESS: %x\n", addr.Address)
@@ -105,7 +105,7 @@ func Test_UserGetPublicKey(t *testing.T) {
 		"Unexpected hash")
 
 	assert.Equal(t,
-		"P-avax1tlq4m9js4ckqvz9umfz7tjxna3yysm79r2jz8e",
+		"P-lux1tlq4m9js4ckqvz9umfz7tjxna3yysm79r2jz8e",
 		addr.Address,
 		"Unexpected address")
 }

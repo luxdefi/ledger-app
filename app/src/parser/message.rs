@@ -159,7 +159,7 @@ impl<'b> FromBytes<'b> for LuxMessage<'b> {
     ) -> Result<&'b [u8], nom::Err<ParserError>> {
         // Lux message structure: Header + 4-byte msg_len + msg
         // according to:
-        // https://docs.avax.network/community/tutorials-contest/2021/red-dev-sig-verify-tutorial#1-hash-the-message
+        // https://docs.lux.network/community/tutorials-contest/2021/red-dev-sig-verify-tutorial#1-hash-the-message
         let header = pic_str!(b"\x1ALux Signed Message:\n"!);
 
         let (rem, _) = tag(header)(input)?;
@@ -220,7 +220,7 @@ mod tests {
     }
 
     #[test]
-    fn parse_avax_msg() {
+    fn parse_lux_msg() {
         let msg = construct_msg(DATA);
         let (_, tx) = LuxMessage::from_bytes(&msg).unwrap();
         let m = std::str::from_utf8(tx.msg()).unwrap();

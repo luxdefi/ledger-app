@@ -26,7 +26,7 @@ pub struct Eip2930<'b> {
     // it is not clear if chainID
     // is an u32, u8, u64
     // considering this might
-    // come from an avax C-Chain
+    // come from an lux C-Chain
     chain_id: &'b [u8],
     pub base: BaseLegacy<'b>,
     access_list: &'b [u8],

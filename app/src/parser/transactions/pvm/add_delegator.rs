@@ -23,7 +23,7 @@ use crate::{
     checked_add,
     handlers::handle_ui_message,
     parser::{
-        nano_avax_to_fp_str, Address, BaseTxFields, DisplayableItem, FromBytes, Header, ObjectList,
+        nano_lux_to_fp_str, Address, BaseTxFields, DisplayableItem, FromBytes, Header, ObjectList,
         OutputIdx, ParserError, PvmOutput, SECPOutputOwners, Stake, TransferableOutput, Validator,
         MAX_ADDRESS_ENCODED_LEN, PVM_ADD_DELEGATOR,
     },
@@ -304,7 +304,7 @@ impl<'b> AddDelegatorTx<'b> {
 
                 res
             }
-            // address rendering, according to avax team 99.99% of transactions only comes with one
+            // address rendering, according to lux team 99.99% of transactions only comes with one
             // address, but we support rendering any
             x @ 1.. if x < num_inner_items => {
                 // get the address index
@@ -383,7 +383,7 @@ impl<'b> AddDelegatorTx<'b> {
 
                     let fee = self.fee().map_err(|_| ViewError::Unknown)?;
                     let fee_buff =
-                        nano_avax_to_fp_str(fee, &mut buffer[..]).map_err(|_| ViewError::Unknown)?;
+                        nano_lux_to_fp_str(fee, &mut buffer[..]).map_err(|_| ViewError::Unknown)?;
                     handle_ui_message(fee_buff, message, page)
                 }
                 _ => Err(ViewError::NoData),

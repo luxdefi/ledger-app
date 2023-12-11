@@ -23,7 +23,7 @@ use zemu_sys::ViewError;
 use crate::{
     handlers::handle_ui_message,
     parser::{
-        cb58_output_len, nano_avax_to_fp_str, BaseTxFields, DisplayableItem, FromBytes, Header,
+        cb58_output_len, nano_lux_to_fp_str, BaseTxFields, DisplayableItem, FromBytes, Header,
         ParserError, PvmOutput, SubnetAuth, SubnetId, CB58_CHECKSUM_LEN, PVM_CREATE_CHAIN,
     },
     utils::{bs58_encode, hex_encode, ApduPanic},
@@ -187,7 +187,7 @@ impl<'b> DisplayableItem for CreateChainTx<'b> {
                 let mut buffer = [0; u64::FORMATTED_SIZE_DECIMAL + 2];
                 let fee = self.fee().map_err(|_| ViewError::Unknown)?;
                 let fee_buff =
-                    nano_avax_to_fp_str(fee, &mut buffer[..]).map_err(|_| ViewError::Unknown)?;
+                    nano_lux_to_fp_str(fee, &mut buffer[..]).map_err(|_| ViewError::Unknown)?;
 
                 handle_ui_message(fee_buff, message, page)
             }

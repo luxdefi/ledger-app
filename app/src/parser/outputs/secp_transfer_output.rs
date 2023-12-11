@@ -24,7 +24,7 @@ use zemu_sys::ViewError;
 use crate::{
     checked_add,
     handlers::handle_ui_message,
-    parser::{nano_avax_to_fp_str, Address, DisplayableItem, FromBytes, ParserError, ADDRESS_LEN},
+    parser::{nano_lux_to_fp_str, Address, DisplayableItem, FromBytes, ParserError, ADDRESS_LEN},
 };
 
 const LUX_TO_LEN: usize = 9; //b" LUX to "
@@ -118,16 +118,16 @@ impl<'a> DisplayableItem for SECPTransferOutput<'a> {
                 let title_content = pic_str!(b"Amount");
                 title[..title_content.len()].copy_from_slice(title_content);
 
-                let avax_to = pic_str!(b" LUX to ");
+                let lux_to = pic_str!(b" LUX to ");
 
                 // write the amount
-                let len = nano_avax_to_fp_str(self.amount, &mut buffer[..])
+                let len = nano_lux_to_fp_str(self.amount, &mut buffer[..])
                     .map_err(|_| ViewError::Unknown)?
                     .len();
 
-                // write avax
-                buffer[len..(len + avax_to.len())].copy_from_slice(avax_to);
-                handle_ui_message(&buffer[..(len + avax_to.len())], message, page)
+                // write lux
+                buffer[len..(len + lux_to.len())].copy_from_slice(lux_to);
+                handle_ui_message(&buffer[..(len + lux_to.len())], message, page)
             }
 
             x @ 1.. if x >= addr_item_n => {

@@ -16,7 +16,7 @@ use crate::checked_add;
 ********************************************************************************/
 use crate::handlers::handle_ui_message;
 use crate::parser::{
-    nano_avax_to_fp_str, AvmOutput, BaseTxFields, ChainId, DisplayableItem, FromBytes, Header,
+    nano_lux_to_fp_str, AvmOutput, BaseTxFields, ChainId, DisplayableItem, FromBytes, Header,
     ObjectList, ParserError, TransferableOp, AVM_OPERATION_TX, MAX_ADDRESS_ENCODED_LEN,
 };
 use core::{mem::MaybeUninit, ptr::addr_of_mut};
@@ -239,7 +239,7 @@ impl<'b> DisplayableItem for OperationTx<'b> {
                 let fee = self.fee().map_err(|_| ViewError::Unknown)?;
 
                 let fee_str =
-                    nano_avax_to_fp_str(fee, &mut buffer[..]).map_err(|_| ViewError::Unknown)?;
+                    nano_lux_to_fp_str(fee, &mut buffer[..]).map_err(|_| ViewError::Unknown)?;
                 handle_ui_message(fee_str, message, page)
             }
 

@@ -20,7 +20,7 @@ use zemu_sys::ViewError;
 use crate::checked_add;
 use crate::handlers::handle_ui_message;
 use crate::parser::{
-    nano_avax_to_fp_str, AvmOutput, BaseTxFields, DisplayableItem, FromBytes, Header, ParserError,
+    nano_lux_to_fp_str, AvmOutput, BaseTxFields, DisplayableItem, FromBytes, Header, ParserError,
     MAX_ADDRESS_ENCODED_LEN, TRANSFER_TX,
 };
 
@@ -176,9 +176,9 @@ impl<'b> DisplayableItem for Transfer<'b> {
                 let fee = self.fee().map_err(|_| ViewError::Unknown)?;
                 let mut content = [0; u64::FORMATTED_SIZE_DECIMAL + 2];
                 let fee =
-                    nano_avax_to_fp_str(fee, &mut content[..]).map_err(|_| ViewError::Unknown)?;
+                    nano_lux_to_fp_str(fee, &mut content[..]).map_err(|_| ViewError::Unknown)?;
 
-                // write avax
+                // write lux
                 handle_ui_message(fee, message, page)
             }
 

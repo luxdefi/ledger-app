@@ -163,8 +163,8 @@ describe.each(models)('signHash [%s]', function (m) {
       const content = Buffer.from(message, 'utf8')
       let msgSize = Buffer.alloc(4)
       msgSize.writeUInt32BE(content.length, 0)
-      const avax_msg = Buffer.from(`${header}${msgSize}${content}`, 'utf8')
-      const msgHash = Uint8Array.from(hash.update(avax_msg).digest())
+      const lux_msg = Buffer.from(`${header}${msgSize}${content}`, 'utf8')
+      const msgHash = Uint8Array.from(hash.update(lux_msg).digest())
 
       for (const signer of signing_list) {
         const path = `${ROOT_PATH}/${signer}`

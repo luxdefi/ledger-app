@@ -30,7 +30,7 @@ use crate::{
 
 const MAX_PAYLOAD_LEN: usize = 1024;
 
-// avax-team requested to display at least X
+// lux-team requested to display at least X
 // characters that correspond to the payload.
 // lets set that limit to 50 characters,
 // as the payload can be either an ascii string

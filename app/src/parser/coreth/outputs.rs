@@ -24,7 +24,7 @@ use crate::checked_add;
 use crate::{
     handlers::handle_ui_message,
     parser::{
-        error::ParserError, nano_avax_to_fp_str, Address, AssetId, DisplayableItem, FromBytes,
+        error::ParserError, nano_lux_to_fp_str, Address, AssetId, DisplayableItem, FromBytes,
         Output, OutputType, SECPTransferOutput,
     },
 };
@@ -170,7 +170,7 @@ impl<'b> DisplayableItem for EVMOutput<'b> {
             0 => {
                 let title_content = pic_str!(b"Amount");
                 title[..title_content.len()].copy_from_slice(title_content);
-                let buffer = nano_avax_to_fp_str(self.amount, &mut buffer)
+                let buffer = nano_lux_to_fp_str(self.amount, &mut buffer)
                     .map_err(|_| ViewError::Unknown)?;
 
                 handle_ui_message(buffer, message, page)

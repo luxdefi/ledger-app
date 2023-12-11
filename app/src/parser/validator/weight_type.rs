@@ -5,7 +5,7 @@ use zemu_sys::ViewError;
 
 use crate::{
     handlers::handle_ui_message,
-    parser::{nano_avax_to_fp_str, u64_to_str, DisplayableItem, FromBytes},
+    parser::{nano_lux_to_fp_str, u64_to_str, DisplayableItem, FromBytes},
 };
 
 pub trait StakeTrait {
@@ -65,7 +65,7 @@ impl DisplayableItem for Stake {
 
                 let mut buffer = [0; u64::FORMATTED_SIZE_DECIMAL + 2];
                 let num =
-                    nano_avax_to_fp_str(self.0, &mut buffer[..]).map_err(|_| ViewError::Unknown)?;
+                    nano_lux_to_fp_str(self.0, &mut buffer[..]).map_err(|_| ViewError::Unknown)?;
 
                 handle_ui_message(num, message, page)
             }

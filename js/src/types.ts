@@ -35,7 +35,7 @@ export interface ResponseAppInfo extends ResponseBase {
 }
 
 export interface ResponseSign extends ResponseBase {
-  // avax expect a map path -> signature
+  // lux expect a map path -> signature
   hash: null | Buffer
   signatures: null | Map<string, Buffer>
 }
