@@ -10,5 +10,5 @@ input_file: app/src/parser/testvectors/add_subnet_validator.json
     "End time": "2020-08-28 21:57:26 UTC",
     "Weight": "54321",
     "SubnetID": "g4WNtLL98APX666NZGfjoDDsr6fsS27NsjhuCSTAeX5Dtx1Nb",
-    "Fee(AVAX)": "2000.001",
+    "Fee(LUX)": "2000.001",
 ]

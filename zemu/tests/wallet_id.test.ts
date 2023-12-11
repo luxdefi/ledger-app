@@ -16,7 +16,7 @@
 
 import Zemu from '@zondax/zemu'
 import { defaultOptions, models } from './common'
-import AvalancheApp from '@zondax/ledger-avalanche-app'
+import LuxApp from '@zondax/ledger-lux-app'
 
 jest.setTimeout(200000)
 
@@ -27,7 +27,7 @@ describe.each(models)('WalletID [%s] - wallet id', function (m) {
       const sim = new Zemu(m.path)
       try {
         await sim.start(defaultOptions(m))
-        const app = new AvalancheApp(sim.getTransport())
+        const app = new LuxApp(sim.getTransport())
         const resp = await app.getWalletId()
 
         console.log(resp, m.name)
@@ -47,7 +47,7 @@ describe.each(models)('WalletID [%s] - wallet id', function (m) {
       const sim = new Zemu(m.path)
       try {
         await sim.start(defaultOptions(m))
-        const app = new AvalancheApp(sim.getTransport())
+        const app = new LuxApp(sim.getTransport())
         const respReq = app.showWalletId()
 
         await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())

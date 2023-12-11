@@ -26,7 +26,7 @@ use crate::{
         avax::sign_hash::Sign as SignHash,
         resources::{HASH, PATH},
     },
-    parser::{AvaxMessage, DisplayableItem},
+    parser::{LuxMessage, DisplayableItem},
     sys,
     utils::{ApduBufferRead, Uploader},
 };
@@ -61,7 +61,7 @@ impl Sign {
 
         let digest = Self::sha256_digest(data)?;
         // parse message
-        let msg = AvaxMessage::new(data).map_err(|_| Error::DataInvalid)?;
+        let msg = LuxMessage::new(data).map_err(|_| Error::DataInvalid)?;
 
         let ui = SignUI { hash: digest, msg };
 
@@ -72,7 +72,7 @@ impl Sign {
 impl ApduHandler for Sign {
     #[inline(never)]
     fn handle(flags: &mut u32, tx: &mut u32, buffer: ApduBufferRead<'_>) -> Result<(), Error> {
-        sys::zemu_log_stack("AvaxSignMsg::handle\x00");
+        sys::zemu_log_stack("LuxSignMsg::handle\x00");
 
         *tx = 0;
 
@@ -86,7 +86,7 @@ impl ApduHandler for Sign {
 
 pub(crate) struct SignUI {
     hash: [u8; Sign::SIGN_HASH_SIZE],
-    msg: AvaxMessage<'static>,
+    msg: LuxMessage<'static>,
 }
 
 impl Viewable for SignUI {

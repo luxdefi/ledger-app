@@ -21,7 +21,7 @@ mod time;
 pub use self::time::{timestamp_to_str_date, TimeError};
 pub use path_wrapper::PathWrapper;
 
-use crate::parser::{ParserError, CB58_CHECKSUM_LEN, NANO_AVAX_DECIMAL_DIGITS};
+use crate::parser::{ParserError, CB58_CHECKSUM_LEN, NANO_LUX_DECIMAL_DIGITS};
 use crate::sys::PIC;
 use lexical_core::Number;
 
@@ -54,7 +54,7 @@ pub fn nano_avax_to_fp_str(value: u64, out_str: &mut [u8]) -> Result<&mut [u8], 
 
     u64_to_str(value, &mut out_str[..])?;
 
-    intstr_to_fpstr_inplace(out_str, NANO_AVAX_DECIMAL_DIGITS)
+    intstr_to_fpstr_inplace(out_str, NANO_LUX_DECIMAL_DIGITS)
         .map_err(|_| ParserError::UnexpectedError)
 }
 

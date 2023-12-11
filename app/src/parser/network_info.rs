@@ -60,7 +60,7 @@ impl TryFrom<u32> for NetworkId {
 
 // bellow type defines the ID of supported
 // chains, although in the protocol there is room for
-// local networks, the current avalanche wallet does
+// local networks, the current lux wallet does
 // not support transactios from/to it
 #[derive(Clone, Copy, PartialEq, Eq)]
 #[repr(u8)]

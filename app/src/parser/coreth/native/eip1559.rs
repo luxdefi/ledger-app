@@ -27,7 +27,7 @@ use crate::{
     },
     parser::{
         intstr_to_fpstr_inplace, Address, DisplayableItem, EthData, FromBytes, ParserError,
-        ADDRESS_LEN, WEI_AVAX_DIGITS, WEI_NAVAX_DIGITS,
+        ADDRESS_LEN, WEI_LUX_DIGITS, WEI_NLUX_DIGITS,
     },
     utils::ApduPanic,
 };
@@ -181,11 +181,11 @@ impl<'b> Eip1559<'b> {
                 let label = pic_str!(b"Transfer");
                 title[..label.len()].copy_from_slice(label);
 
-                let curr = pic_str!(b"AVAX "!);
+                let curr = pic_str!(b"LUX "!);
                 let (prefix, message) = message.split_at_mut(curr.len());
                 prefix.copy_from_slice(curr);
 
-                render_u256(&self.value, WEI_AVAX_DIGITS, message, page)
+                render_u256(&self.value, WEI_LUX_DIGITS, message, page)
             }
 
             1 => {
@@ -236,7 +236,7 @@ impl<'b> Eip1559<'b> {
                 let label = pic_str!(b"Funding Contract");
                 title[..label.len()].copy_from_slice(label);
 
-                render_u256(&self.value, WEI_AVAX_DIGITS, message, page)
+                render_u256(&self.value, WEI_LUX_DIGITS, message, page)
             }
             x @ 2.. if !render_funding && x == 2 || render_funding && x == 3 => {
                 self.data.render_item(0, title, message, page)
@@ -294,11 +294,11 @@ impl<'b> Eip1559<'b> {
                 let label = pic_str!(b"Transfer");
                 title[..label.len()].copy_from_slice(label);
 
-                let curr = pic_str!(b"AVAX "!);
+                let curr = pic_str!(b"LUX "!);
                 let (prefix, message) = message.split_at_mut(curr.len());
                 prefix.copy_from_slice(curr);
 
-                render_u256(&self.value, WEI_AVAX_DIGITS, message, page)
+                render_u256(&self.value, WEI_LUX_DIGITS, message, page)
             }
 
             2 => {
@@ -407,7 +407,7 @@ impl<'b> Eip1559<'b> {
         let fee = self.fee().map_err(|_| ViewError::Unknown)?;
         fee.to_lexical(&mut bytes);
 
-        let out = intstr_to_fpstr_inplace(&mut bytes, WEI_NAVAX_DIGITS)
+        let out = intstr_to_fpstr_inplace(&mut bytes, WEI_NLUX_DIGITS)
             .map_err(|_| ViewError::Unknown)?;
 
         handle_ui_message(out, message, page)

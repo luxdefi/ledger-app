@@ -14,7 +14,7 @@
 *  limitations under the License.
 // ********************************************************************************/
 
-package ledger_avalanche_go
+package ledger_lux_go
 
 import (
 	"errors"
@@ -25,8 +25,8 @@ import (
 	ledger_go "github.com/zondax/ledger-go"
 )
 
-// FindLedgerAvalancheApp FindLedgerAvalancheUserApp finds a Avax user app running in a ledger device
-func FindLedgerAvalancheApp() (_ *LedgerAvalanche, rerr error) {
+// FindLedgerLuxApp FindLedgerLuxUserApp finds a Lux user app running in a ledger device
+func FindLedgerLuxApp() (_ *LedgerLux, rerr error) {
 	ledgerAdmin := ledger_go.NewLedgerAdmin()
 	ledgerAPI, err := ledgerAdmin.Connect(0)
 	if err != nil {
@@ -39,11 +39,11 @@ func FindLedgerAvalancheApp() (_ *LedgerAvalanche, rerr error) {
 		}
 	}()
 
-	app := &LedgerAvalanche{ledgerAPI, VersionInfo{}}
+	app := &LedgerLux{ledgerAPI, VersionInfo{}}
 	appVersion, err := app.GetVersion()
 	if err != nil {
 		if err.Error() == "[APDU_CODE_CLA_NOT_SUPPORTED] CLA not supported" {
-			err = errors.New("are you sure the Avalanche app is open?")
+			err = errors.New("are you sure the Lux app is open?")
 		}
 		return nil, err
 	}
@@ -55,13 +55,13 @@ func FindLedgerAvalancheApp() (_ *LedgerAvalanche, rerr error) {
 	return app, err
 }
 
-// Close closes a connection with the Avalanche user app
-func (ledger *LedgerAvalanche) Close() error {
+// Close closes a connection with the Lux user app
+func (ledger *LedgerLux) Close() error {
 	return ledger.api.Close()
 }
 
 // CheckVersion returns true if the App version is supported by this library
-func (ledger *LedgerAvalanche) CheckVersion(ver VersionInfo) error {
+func (ledger *LedgerLux) CheckVersion(ver VersionInfo) error {
 	version, err := ledger.GetVersion()
 	if err != nil {
 		return err
@@ -70,8 +70,8 @@ func (ledger *LedgerAvalanche) CheckVersion(ver VersionInfo) error {
 	return CheckVersion(*version, ver)
 }
 
-// GetVersion returns the current version of the Avalanche user app
-func (ledger *LedgerAvalanche) GetVersion() (*VersionInfo, error) {
+// GetVersion returns the current version of the Lux user app
+func (ledger *LedgerLux) GetVersion() (*VersionInfo, error) {
 	message := []byte{CLA, INS_GET_VERSION, 0, 0, 0}
 	response, err := ledger.api.Exchange(message)
 
@@ -94,7 +94,7 @@ func (ledger *LedgerAvalanche) GetVersion() (*VersionInfo, error) {
 }
 
 // GetPubKey returns the pubkey and hash
-func (ledger *LedgerAvalanche) GetPubKey(path string, show bool, hrp string, chainid string) (*ResponseAddr, error) {
+func (ledger *LedgerLux) GetPubKey(path string, show bool, hrp string, chainid string) (*ResponseAddr, error) {
 	if len(hrp) > 83 {
 		return nil, errors.New("hrp len should be < 83 chars")
 	}
@@ -144,7 +144,7 @@ func (ledger *LedgerAvalanche) GetPubKey(path string, show bool, hrp string, cha
 	return &ResponseAddr{publicKey, hash, address}, nil
 }
 
-func (ledger *LedgerAvalanche) Sign(pathPrefix string, signingPaths []string, message []byte, changePaths []string) (*ResponseSign, error) {
+func (ledger *LedgerLux) Sign(pathPrefix string, signingPaths []string, message []byte, changePaths []string) (*ResponseSign, error) {
 	paths := signingPaths
 	if changePaths != nil {
 		paths = append(paths, changePaths...)
@@ -199,7 +199,7 @@ func (ledger *LedgerAvalanche) Sign(pathPrefix string, signingPaths []string, me
 	return SignAndCollect(signingPaths, ledger)
 }
 
-func (ledger *LedgerAvalanche) SignHash(pathPrefix string, signingPaths []string, hash []byte) (*ResponseSign, error) {
+func (ledger *LedgerLux) SignHash(pathPrefix string, signingPaths []string, hash []byte) (*ResponseSign, error) {
 	if len(hash) != HASH_LEN {
 		return nil, errors.New("wrong hash size")
 	}
@@ -224,7 +224,7 @@ func (ledger *LedgerAvalanche) SignHash(pathPrefix string, signingPaths []string
 	return SignAndCollect(signingPaths, ledger)
 }
 
-func SignAndCollect(signingPaths []string, ledger *LedgerAvalanche) (*ResponseSign, error) {
+func SignAndCollect(signingPaths []string, ledger *LedgerLux) (*ResponseSign, error) {
 	// Where each pair path_suffix, signature are stored
 	signatures := make(map[string][]byte)
 
@@ -253,7 +253,7 @@ func SignAndCollect(signingPaths []string, ledger *LedgerAvalanche) (*ResponseSi
 	return &ResponseSign{nil, signatures}, nil
 }
 
-func (ledger *LedgerAvalanche) VerifyMultipleSignatures(response ResponseSign, messageHash []byte, rootPath string, signingPaths []string, hrp string, chainID string) error {
+func (ledger *LedgerLux) VerifyMultipleSignatures(response ResponseSign, messageHash []byte, rootPath string, signingPaths []string, hrp string, chainID string) error {
 	if len(response.Signature) != len(signingPaths) {
 		return errors.New("sizes of signatures and paths don't match")
 	}

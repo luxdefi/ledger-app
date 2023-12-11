@@ -14,7 +14,7 @@
 *  limitations under the License.
 ********************************************************************************/
 
-package ledger_avalanche_go
+package ledger_lux_go
 
 import (
 	"crypto/sha256"
@@ -32,7 +32,7 @@ func Test_UserFindLedger(t *testing.T) {
 	if testing.Short() {
 		t.Skip("Skipping test in short mode.")
 	}
-	userApp, err := FindLedgerAvalancheApp()
+	userApp, err := FindLedgerLuxApp()
 	if err != nil {
 		t.Fatalf(err.Error())
 	}
@@ -45,7 +45,7 @@ func Test_UserGetVersion(t *testing.T) {
 	if testing.Short() {
 		t.Skip("Skipping test in short mode.")
 	}
-	userApp, err := FindLedgerAvalancheApp()
+	userApp, err := FindLedgerLuxApp()
 	if err != nil {
 		t.Fatalf(err.Error())
 	}
@@ -65,7 +65,7 @@ func Test_UserGetPublicKey(t *testing.T) {
 	if testing.Short() {
 		t.Skip("Skipping test in short mode.")
 	}
-	userApp, err := FindLedgerAvalancheApp()
+	userApp, err := FindLedgerLuxApp()
 	if err != nil {
 		t.Fatalf(err.Error())
 	}
@@ -114,7 +114,7 @@ func Test_UserGetPublicKeyETH(t *testing.T) {
 	if testing.Short() {
 		t.Skip("Skipping test in short mode.")
 	}
-	userApp, err := FindLedgerAvalancheApp()
+	userApp, err := FindLedgerLuxApp()
 	if err != nil {
 		t.Fatalf(err.Error())
 	}
@@ -154,7 +154,7 @@ func Test_UserPK_HDPaths(t *testing.T) {
 	if testing.Short() {
 		t.Skip("Skipping test in short mode.")
 	}
-	userApp, err := FindLedgerAvalancheApp()
+	userApp, err := FindLedgerLuxApp()
 	if err != nil {
 		t.Fatalf(err.Error())
 	}
@@ -206,7 +206,7 @@ func Test_UserPK_HDPaths(t *testing.T) {
 }
 
 //func Test_UserSignMsg(t *testing.T) {
-//	userApp, err := FindLedgerAvalancheApp()
+//	userApp, err := FindLedgerLuxApp()
 //	if err != nil {
 //		t.Fatalf(err.Error())
 //	}
@@ -219,7 +219,7 @@ func Test_UserSign(t *testing.T) {
 	if testing.Short() {
 		t.Skip("Skipping test in short mode.")
 	}
-	userApp, err := FindLedgerAvalancheApp()
+	userApp, err := FindLedgerLuxApp()
 	if err != nil {
 		t.Fatalf(err.Error())
 	}
@@ -313,7 +313,7 @@ func Test_UserSignHash(t *testing.T) {
 	if testing.Short() {
 		t.Skip("Skipping test in short mode.")
 	}
-	userApp, err := FindLedgerAvalancheApp()
+	userApp, err := FindLedgerLuxApp()
 	if err != nil {
 		t.Fatalf(err.Error())
 	}
@@ -322,7 +322,7 @@ func Test_UserSignHash(t *testing.T) {
 	rootPath := "m/44'/9000'/0'"
 	signingList := []string{"0/0", "4/8"}
 
-	message := "AvalancheApp"
+	message := "LuxApp"
 	h := sha256.New()
 	h.Write([]byte(message))
 	hash := h.Sum(nil)

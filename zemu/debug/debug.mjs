@@ -1,5 +1,5 @@
 import Zemu, { DEFAULT_START_OPTIONS } from '@zondax/zemu'
-import AvalancheApp from '@zondax/ledger-avalanche-app'
+import LuxApp from '@zondax/ledger-lux-app'
 import Eth from '@ledgerhq/hw-app-eth'
 
 import path from 'path'
@@ -97,7 +97,7 @@ async function main() {
 
   try {
     await sim.start(sim_options)
-    const app = new AvalancheApp.default(sim.getTransport())
+    const app = new LuxApp.default(sim.getTransport())
 
     ////////////
     /// TIP you can use zemu commands here to take the app to the point where you trigger a breakpoint

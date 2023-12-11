@@ -232,7 +232,7 @@ impl<'b> DisplayableItem for OperationTx<'b> {
                 op.render_item(idx, title, message, page)
             }
             x if x == self.num_items()? - 2 => {
-                let title_content = pic_str!(b"Fee(AVAX)");
+                let title_content = pic_str!(b"Fee(LUX)");
                 title[..title_content.len()].copy_from_slice(title_content);
 
                 let mut buffer = [0; u64::FORMATTED_SIZE_DECIMAL + 2];

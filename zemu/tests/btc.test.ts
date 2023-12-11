@@ -16,8 +16,8 @@
 
 import Zemu from '@zondax/zemu'
 import { cartesianProduct, defaultOptions, models, btc_models, BTC_PATH } from './common'
-import AvalancheApp from '@zondax/ledger-avalanche-app'
-import { DefaultWalletPolicy, WalletPolicy, PsbtV2 } from '@zondax/ledger-avalanche-app'
+import LuxApp from '@zondax/ledger-lux-app'
+import { DefaultWalletPolicy, WalletPolicy, PsbtV2 } from '@zondax/ledger-lux-app'
 
 // @ts-ignore
 import secp256k1 from 'secp256k1/elliptic'
@@ -147,7 +147,7 @@ describe.each(btc_models)('Psbt_[%s]; sign', function (m) {
 
     try {
       await sim.start(defaultOptions(m))
-      const app = new AvalancheApp(sim.getTransport())
+      const app = new LuxApp(sim.getTransport())
       const msg = obj.op
 
       const testcase = `${m.prefix.toLowerCase()}-sign-${obj.name}`
@@ -221,7 +221,7 @@ describe.each(btc_models)('btc_epubkey[%s]; sign', function (m) {
 
     try {
       await sim.start(defaultOptions(m, true))
-      const app = new AvalancheApp(sim.getTransport())
+      const app = new LuxApp(sim.getTransport())
 
       const testcase = `${m.prefix.toLowerCase()}-btc_expub_key-${m.name}`
 

@@ -16,7 +16,7 @@
 
 import Zemu, { zondaxMainmenuNavigation, ButtonKind } from '@zondax/zemu'
 import { defaultOptions, models } from './common'
-import AvalancheApp from '@zondax/ledger-avalanche-app'
+import LuxApp from '@zondax/ledger-lux-app'
 
 jest.setTimeout(200000)
 
@@ -45,7 +45,7 @@ describe.each(models)('Standard', function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start(defaultOptions(m))
-      const app = new AvalancheApp(sim.getTransport())
+      const app = new LuxApp(sim.getTransport())
       const resp = await app.getVersion()
 
       console.log(resp)

@@ -3,7 +3,7 @@ import Transport from '@ledgerhq/hw-transport'
 export const CLA = 0x80
 export const CLA_ETH = 0xe0
 export const CHUNK_SIZE = 250
-export const APP_KEY = 'AVAX'
+export const APP_KEY = 'LUX'
 export const FIRST_MESSAGE = 0x01
 export const LAST_MESSAGE = 0x02
 export const NEXT_MESSAGE = 0x03

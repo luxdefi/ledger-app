@@ -16,7 +16,7 @@
 
 import Zemu from '@zondax/zemu'
 import { defaultOptions as commonOpts, models, ROOT_PATH } from './common'
-import AvalancheApp from '@zondax/ledger-avalanche-app'
+import LuxApp from '@zondax/ledger-lux-app'
 
 jest.setTimeout(200000)
 
@@ -31,7 +31,7 @@ describe.each(models)('Standard [%s] - extended pubkey', function (m) {
       const sim = new Zemu(m.path)
       try {
         await sim.start(defaultOptions(m))
-        const app = new AvalancheApp(sim.getTransport())
+        const app = new LuxApp(sim.getTransport())
         const resp = await app.getExtendedPubKey(ROOT_PATH, false)
 
         console.log(resp, m.name)
@@ -52,7 +52,7 @@ describe.each(models)('Standard [%s] - extended pubkey', function (m) {
       const sim = new Zemu(m.path)
       try {
         await sim.start(defaultOptions(m))
-        const app = new AvalancheApp(sim.getTransport())
+        const app = new LuxApp(sim.getTransport())
         const respReq = app.getExtendedPubKey(ROOT_PATH, true)
 
         await sim.waitUntilScreenIsNot(sim.getMainMenuSnapshot())

@@ -5,7 +5,7 @@ input_file: app/src/parser/testvectors/no_decimal.json
 ---
 [
     "Transfer": "Transaction",
-    "Transfer": "1 AVAX to ",
+    "Transfer": "1 LUX to ",
     "Address": "fuji12yp9cc0melq83a5nxnurf0nd6fk4t224unmnwx",
-    "Fee(AVAX)": "1",
+    "Fee(LUX)": "1",
 ]

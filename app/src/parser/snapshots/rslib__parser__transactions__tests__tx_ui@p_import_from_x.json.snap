@@ -5,7 +5,7 @@ input_file: app/src/parser/testvectors/p_import_from_x.json
 ---
 [
     "ImportTx": "Sending",
-    "Amount": "19999.999 AVAX to ",
+    "Amount": "19999.999 LUX to ",
     "Address": "fuji18jma8ppw3nhx5r4ap8clazz0dps7rv5u6wmu4t",
     "From ": "X Chain",
     "Fee": "15188.373088832",

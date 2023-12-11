@@ -33,7 +33,7 @@ use crate::handlers::{
 use crate::handlers::eth::provide_nft_info::Info as NftProvider;
 
 use crate::handlers::avax::{
-    message::Sign as AvaxSignMsg, sign_hash::Sign as SignHash, signing::Sign as AvaxSign,
+    message::Sign as LuxSignMsg, sign_hash::Sign as SignHash, signing::Sign as LuxSign,
 };
 
 #[cfg(feature = "dev")]
@@ -72,9 +72,9 @@ pub fn apdu_dispatch(
         (CLA, INS_GET_PUBLIC_KEY) => GetPublicKey::handle(flags, tx, apdu_buffer),
         (CLA, INS_GET_EXTENDED_PUBLIC_KEY) => GetExtendedPublicKey::handle(flags, tx, apdu_buffer),
         (CLA, INS_GET_WALLET_ID) => WalletId::handle(flags, tx, apdu_buffer),
-        (CLA, INS_SIGN) => AvaxSign::handle(flags, tx, apdu_buffer),
+        (CLA, INS_SIGN) => LuxSign::handle(flags, tx, apdu_buffer),
         (CLA, INS_SIGN_HASH) => SignHash::handle(flags, tx, apdu_buffer),
-        (CLA, INS_SIGN_MSG) => AvaxSignMsg::handle(flags, tx, apdu_buffer),
+        (CLA, INS_SIGN_MSG) => LuxSignMsg::handle(flags, tx, apdu_buffer),
 
         (CLA_ETH, INS_ETH_GET_PUBLIC_KEY) => GetEthPublicKey::handle(flags, tx, apdu_buffer),
         (CLA_ETH, INS_SET_PLUGIN) => SetPlugin::handle(flags, tx, apdu_buffer),

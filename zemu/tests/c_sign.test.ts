@@ -16,7 +16,7 @@
 
 import Zemu from '@zondax/zemu'
 import { ROOT_PATH, defaultOptions, models } from './common'
-import AvalancheApp from '@zondax/ledger-avalanche-app'
+import LuxApp from '@zondax/ledger-lux-app'
 import { C_IMPORT_FROM_X, C_EXPORT_TO_X } from './c_chain_vectors'
 
 // @ts-ignore
@@ -43,7 +43,7 @@ describe.each(models)('C_Sign[%s]; sign', function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start(defaultOptions(m))
-      const app = new AvalancheApp(sim.getTransport())
+      const app = new LuxApp(sim.getTransport())
       const msg = op
 
       const testcase = `${m.prefix.toLowerCase()}-sign-${name}`

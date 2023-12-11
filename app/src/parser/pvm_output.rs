@@ -34,7 +34,7 @@ use zemu_sys::ViewError;
 // buffer on which we write other information so that we need
 // its length to initialize such buffer and having the length defined as a constant and the
 // literal inlined can lead to len mismatch which can cause overlapping.
-const AVAX_UNTIL: &[u8; 12] = b" AVAX until ";
+const LUX_UNTIL: &[u8; 12] = b" LUX until ";
 
 #[derive(Clone, Copy, PartialEq, Eq)]
 #[repr(C)]
@@ -165,13 +165,13 @@ impl<'b> DisplayableItem for PvmOutput<'b> {
             // only after rendering all inner_output items
             x if x == num_inner_items && self.is_locked() => {
                 // legacy app displays:
-                // 'Funds locked', body: '0.5 AVAX until 2021-05-31 21:28:00 UTC'},
+                // 'Funds locked', body: '0.5 LUX until 2021-05-31 21:28:00 UTC'},
                 // so lets do the same thing
                 let t = pic_str!(b"Funds locked");
                 title[..t.len()].copy_from_slice(t);
 
-                let avax_until = PIC::new(AVAX_UNTIL).into_inner();
-                let mut content = [0; AVAX_UNTIL.len()
+                let avax_until = PIC::new(LUX_UNTIL).into_inner();
+                let mut content = [0; LUX_UNTIL.len()
                     + FORMATTED_STR_DATE_LEN
                     + u64::FORMATTED_SIZE_DECIMAL
                     + 2];

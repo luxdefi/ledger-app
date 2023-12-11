@@ -154,7 +154,7 @@ impl TryFrom<(u32, NetworkInfo)> for Transaction__Type {
     }
 }
 
-#[avalanche_app_derive::enum_init]
+#[lux_app_derive::enum_init]
 #[derive(Clone, Copy, PartialEq, Eq)]
 #[cfg_attr(test, derive(Debug))]
 pub enum Transaction<'b> {

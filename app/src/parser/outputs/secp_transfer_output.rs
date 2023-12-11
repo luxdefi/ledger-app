@@ -27,7 +27,7 @@ use crate::{
     parser::{nano_avax_to_fp_str, Address, DisplayableItem, FromBytes, ParserError, ADDRESS_LEN},
 };
 
-const AVAX_TO_LEN: usize = 9; //b" AVAX to "
+const LUX_TO_LEN: usize = 9; //b" LUX to "
 
 #[derive(Clone, Copy, PartialEq, Eq)]
 #[cfg_attr(test, derive(Debug))]
@@ -91,7 +91,7 @@ impl<'b> FromBytes<'b> for SECPTransferOutput<'b> {
 
 impl<'a> DisplayableItem for SECPTransferOutput<'a> {
     fn num_items(&self) -> Result<u8, ViewError> {
-        // According to avalanche team, and to be "compatible" at presentation layer
+        // According to lux team, and to be "compatible" at presentation layer
         // we should summarize the items to show. As they suggested we only show the amount
         // and address. Legacy app errors if there is more than 1 address, in our case we dont yet.
         //
@@ -110,7 +110,7 @@ impl<'a> DisplayableItem for SECPTransferOutput<'a> {
         use bolos::{pic_str, PIC};
         use lexical_core::Number;
 
-        let mut buffer = [0; u64::FORMATTED_SIZE_DECIMAL + 2 + AVAX_TO_LEN];
+        let mut buffer = [0; u64::FORMATTED_SIZE_DECIMAL + 2 + LUX_TO_LEN];
         let addr_item_n = self.num_items()? - self.addresses.len() as u8;
 
         match item_n {
@@ -118,7 +118,7 @@ impl<'a> DisplayableItem for SECPTransferOutput<'a> {
                 let title_content = pic_str!(b"Amount");
                 title[..title_content.len()].copy_from_slice(title_content);
 
-                let avax_to = pic_str!(b" AVAX to ");
+                let avax_to = pic_str!(b" LUX to ");
 
                 // write the amount
                 let len = nano_avax_to_fp_str(self.amount, &mut buffer[..])

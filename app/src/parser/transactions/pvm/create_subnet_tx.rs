@@ -13,7 +13,7 @@
 *  See the License for the specific language governing permissions and
 *  limitations under the License.
 ********************************************************************************/
-use avalanche_app_derive::match_ranges;
+use lux_app_derive::match_ranges;
 use core::{mem::MaybeUninit, ptr::addr_of_mut};
 use nom::bytes::complete::tag;
 use zemu_sys::ViewError;
@@ -121,7 +121,7 @@ impl<'b> DisplayableItem for CreateSubnetTx<'b> {
                 },
                 until owner_items => self.render_owners(x as usize, title, message, page),
                 until 1 => {
-                    let label = pic_str!(b"Fee(AVAX)");
+                    let label = pic_str!(b"Fee(LUX)");
                     title[..label.len()].copy_from_slice(label);
 
                     let mut buffer = [0; u64::FORMATTED_SIZE_DECIMAL + 2];

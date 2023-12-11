@@ -14,7 +14,7 @@
 *  limitations under the License.
 ********************************************************************************/
 
-package ledger_avalanche_go
+package ledger_lux_go
 
 import (
 	"encoding/binary"

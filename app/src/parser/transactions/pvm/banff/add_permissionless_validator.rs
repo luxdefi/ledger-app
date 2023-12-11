@@ -29,7 +29,7 @@ use crate::{
     },
 };
 
-use avalanche_app_derive::match_ranges;
+use lux_app_derive::match_ranges;
 
 #[derive(Clone, Copy, PartialEq, Eq)]
 #[repr(C)]
@@ -315,11 +315,11 @@ impl<'b> AddPermissionlessValidatorTx<'b> {
         header: &[u8],
     ) -> Result<u8, ViewError> {
         //  'Transfer' or 'Stake':
-        //      '0.5 AVAX to
+        //      '0.5 LUX to
         //  Address:
         //      hrp + 1asxdpfsmah8wqr6m8ymfwse5e4pa9fwnvudmpn
         //  Funds locked:
-        //      0.5 AVAX until 2021-05-31 21:28:00 UTC
+        //      0.5 LUX until 2021-05-31 21:28:00 UTC
 
         // get the number of items for the obj wrapped up by PvmOutput
         let num_inner_items = obj.output.num_inner_items()?;
@@ -436,7 +436,7 @@ impl<'b> AddPermissionlessValidatorTx<'b> {
                     handle_ui_message(buffer, message, page)
                 },
                 until 1 => {
-                    let label = pic_str!(b"Fee(AVAX)");
+                    let label = pic_str!(b"Fee(LUX)");
                     title[..label.len()].copy_from_slice(label);
 
                     let fee = self.fee().map_err(|_| ViewError::Unknown)?;

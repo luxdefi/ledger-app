@@ -8,9 +8,9 @@ expression: reduced
     "SubnetID": "SkB92YpWm4UpburLz9tEKZw2i67H3FF6YkjaU4BkFUDTG9Xm",
     "Start time": "1970-01-01 03:25:45 UTC",
     "End time": "1970-01-01 03:25:46 UTC",
-    "Total stake(AVAX)": "0.000000001",
-    "Stake": "0.000000001 AVAX to ",
+    "Total stake(LUX)": "0.000000001",
+    "Stake": "0.000000001 LUX to ",
     "Address": "avax1g32kvaugnx4tk3z4vemc3xd2hdz92enh972wxr",
     "Rewards to": "avax1g32kvaugnx4tk3z4vemc3xd2hdz92enh972wxr",
-    "Fee(AVAX)": "0.001",
+    "Fee(LUX)": "0.001",
 ]

@@ -62,10 +62,10 @@ pub const DEPLOY_DATA_PREVIEW_LEN: usize = 30;
 // but we reduce it to 50 to save some bytes
 pub const COLLECTION_NAME_MAX_LEN: usize = 50;
 
-//Avax units
-pub const NANO_AVAX_DECIMAL_DIGITS: usize = 9;
-pub const WEI_NAVAX_DIGITS: usize = 9;
-pub const WEI_AVAX_DIGITS: usize = 18;
+//Lux units
+pub const NANO_LUX_DECIMAL_DIGITS: usize = 9;
+pub const WEI_NLUX_DIGITS: usize = 9;
+pub const WEI_LUX_DIGITS: usize = 18;
 pub const DELEGATION_FEE_DIGITS: usize = 4;
 
 // data formatting constants

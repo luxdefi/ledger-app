@@ -35,7 +35,7 @@ pub enum ParserError {
     InvalidAddress,
     InvalidPath,
     TooManyOutputs,
-    InvalidAvaxMessage,
+    InvalidLuxMessage,
     UnexpectedData,
     InvalidEthMessage,
     InvalidEthSelector,

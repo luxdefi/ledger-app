@@ -58,7 +58,7 @@ pub use defer::Defer;
 pub use error::ParserError;
 pub use initial_state::{FxId, InitialState};
 pub use inputs::{Input, SECPTransferInput, TransferableInput};
-pub use message::{AvaxMessage, Message};
+pub use message::{LuxMessage, Message};
 pub use network_info::*;
 pub use node_id::*;
 pub use object_list::ObjectList;

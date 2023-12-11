@@ -9,7 +9,7 @@ publish = false
 honggfuzz = "0.5"
 
 zemu-sys = { git = "https://github.com/Zondax/ledger-rust" }
-ledger-app = { default-features = false, path = "../app", package = "avalanche-app" }
+ledger-app = { default-features = false, path = "../app", package = "lux-app" }
 
 [[bin]]
 name = "apdu"

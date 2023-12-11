@@ -16,7 +16,7 @@
 
 import Zemu from '@zondax/zemu'
 import { ETH_DERIVATION, defaultOptions, models } from './common'
-import AvalancheApp from '@zondax/ledger-avalanche-app'
+import LuxApp from '@zondax/ledger-lux-app'
 
 import { Transaction } from "@ethereumjs/tx";
 import { Common } from '@ethereumjs/common'
@@ -82,7 +82,7 @@ const SIGN_TEST_DATA: TestData[] = [
   {
     name: 'pangolin_contract_call',
     op: {
-      // Pangolin AVAX/DAI swap 2
+      // Pangolin LUX/DAI swap 2
       to: '62650ae5c5777d1660cc17fcd4f550000eacdfa0',
       value: '0',
       data: '8a657e670000000000000000000000000000000000000000000000000de0b6b3a76400000000000000000000000000000000000000000000000000000000000000000080000000000000000000000000c7b9b39ab3081ac34fc4324e3f648b55528871970000000000000000000000000000000000000000000000000000017938e114be0000000000000000000000000000000000000000000000000000000000000002000000000000000000000000b31f66aa3c1e785363f0875a1b74e27b85fd66c7000000000000000000000000ba7deebbfc5fa1100fb055a87773e1e99cd3507a',
@@ -132,7 +132,7 @@ const rawUnsignedLegacyTransaction = (params: Op, chainId?: number) => {
     data: params.data !== undefined ? '0x' + params.data : undefined,
   }
 
-  const chain = Common.custom({ name: 'avalanche', networkId: 1, chainId }, { baseChain: 1 })
+  const chain = Common.custom({ name: 'lux', networkId: 1, chainId }, { baseChain: 1 })
   const options = chainId !== undefined ? { common: chain } : undefined
 
   // legacy
@@ -151,7 +151,7 @@ const rawUnsignedLegacyTransaction = (params: Op, chainId?: number) => {
 function check_legacy_signature(hexTx: string, signature: any, chainId: number | undefined) {
   const ethTx = Buffer.from(hexTx, 'hex');
 
-  const chain = Common.custom({ name: 'avalanche', networkId: 1, chainId }, { baseChain: 1 })
+  const chain = Common.custom({ name: 'lux', networkId: 1, chainId }, { baseChain: 1 })
   const tx_options = chainId !== undefined ? { common: chain } : undefined
 
   const txnBufsDecoded: any = RLP.decode(ethTx).slice(0, 6);
@@ -170,7 +170,7 @@ describe.each(models)('EthereumLegacy [%s]; sign', function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start(defaultOptions(m))
-      const app = new AvalancheApp(sim.getTransport())
+      const app = new LuxApp(sim.getTransport())
 
       const testcase = `${m.prefix.toLowerCase()}-eth-sign-${data.name}`
 

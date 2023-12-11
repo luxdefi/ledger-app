@@ -17,7 +17,7 @@
 import Zemu from '@zondax/zemu'
 import { ETH_DERIVATION, defaultOptions, models } from './common'
 import Eth from '@ledgerhq/hw-app-eth'
-import AvalancheApp from '@zondax/ledger-avalanche-app'
+import LuxApp from '@zondax/ledger-lux-app'
 import { ec } from 'elliptic'
 
 type NftInfo = {
@@ -110,7 +110,7 @@ describe.each(models)('EthereumTx [%s]; sign', function (m) {
     const sim = new Zemu(m.path)
     try {
       await sim.start(defaultOptions(m))
-      const app = new AvalancheApp(sim.getTransport())
+      const app = new LuxApp(sim.getTransport())
       const msg = data.op
 
       const testcase = `${m.prefix.toLowerCase()}-eth-sign-${data.name}`

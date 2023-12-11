@@ -14,7 +14,7 @@
 *  limitations under the License.
 ********************************************************************************/
 #![allow(dead_code)]
-//! This crate exports 2 macros with a specific use case for the ledger-avalanche app
+//! This crate exports 2 macros with a specific use case for the ledger-lux app
 //!
 //! See [macro@unroll] for more documentation
 

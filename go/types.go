@@ -14,7 +14,7 @@
 *  limitations under the License.
 ********************************************************************************/
 
-package ledger_avalanche_go
+package ledger_lux_go
 
 import (
 	"fmt"
@@ -84,8 +84,8 @@ const (
 	SignVerifyError             LedgerError = 0x6f01
 )
 
-// LedgerAvalanche represents a connection to the Avax app in a Ledger device
-type LedgerAvalanche struct {
+// LedgerLux represents a connection to the Lux app in a Ledger device
+type LedgerLux struct {
 	api     ledger_go.LedgerDevice
 	version VersionInfo
 }

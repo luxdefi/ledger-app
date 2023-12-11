@@ -101,7 +101,7 @@ function processGetXPubResponse(response: Buffer) {
   }
 }
 
-export default class AvalancheApp {
+export default class LuxApp {
   transport
   private eth
   private btc
@@ -141,9 +141,9 @@ export default class AvalancheApp {
 
   private async signGetChunks(message: Buffer, path?: string) {
     if (path === undefined) {
-      return AvalancheApp.prepareChunks(message, Buffer.alloc(0))
+      return LuxApp.prepareChunks(message, Buffer.alloc(0))
     } else {
-      return AvalancheApp.prepareChunks(message, serializePath(path))
+      return LuxApp.prepareChunks(message, serializePath(path))
     }
   }
 
@@ -361,7 +361,7 @@ export default class AvalancheApp {
       throw new Error('Only avax path is supported')
     }
 
-    const header = Buffer.from('\x1AAvalanche Signed Message:\n', 'utf8')
+    const header = Buffer.from('\x1ALux Signed Message:\n', 'utf8')
 
     const content = Buffer.from(message, 'utf8')
 

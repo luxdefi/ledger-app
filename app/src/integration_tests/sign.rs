@@ -78,14 +78,14 @@ fn p_create_chain() {
 fn p_create_chain_inner(signers: &[[u32; 2]]) -> HashMap<String, bool> {
     const ROOT: [u32; 3] = [0x8000_0000 + 44, 0x8000_0000 + 9000, 0];
 
-    let op = AvaxSign::new(ROOT, signers, P_CREATE_CHAIN, &[]);
+    let op = LuxSign::new(ROOT, signers, P_CREATE_CHAIN, &[]);
 
     let result = op.send();
     let mut verifications = HashMap::with_capacity(result.len());
 
     let hash = Sha256::digest(P_CREATE_CHAIN).unwrap();
     for (path, sig) in result {
-        let pkey = AvaxSign::get_pubkey_of(path);
+        let pkey = LuxSign::get_pubkey_of(path);
         let pkey = VerifyingKey::from(pkey);
 
         let (_, r, s) = array_refs![array_ref!(sig, 0, 65), 1, 32, 32];
@@ -135,14 +135,14 @@ const P_CREATE_CHAIN: &[u8] = &[
     0x00, 0x00, 0x00, 0x0a, 0x00, 0x00, 0x00, 0x01, 0x00, 0x00, 0x00, 0x00,
 ];
 
-pub struct AvaxSign {
+pub struct LuxSign {
     prefix: BIP32Path<3>,
     signers: Vec<BIP32Path<2>>,
     change: Vec<BIP32Path<2>>,
     msg: Vec<u8>,
 }
 
-impl AvaxSign {
+impl LuxSign {
     pub fn new(prefix: [u32; 3], signers: &[[u32; 2]], msg: &[u8], change: &[[u32; 2]]) -> Self {
         let prefix = BIP32Path::new(prefix).unwrap();
         let signers = signers

@@ -1,4 +1,4 @@
-module github.com/ava-labs/ledger-avalanche/go
+module github.com/ava-labs/ledger-lux/go
 
 go 1.19
 

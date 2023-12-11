@@ -1,11 +1,11 @@
-# Avalanche App
+# Lux App
 
 ## General structure
 
-The app provides support for 2 sets of instructions, the Avalanche set and the Ethereum set.
+The app provides support for 2 sets of instructions, the Lux set and the Ethereum set.
 The Ethereum set is aimed at providing compatibility with EVM wallets, 
 as such the API is the same as the Ethereum App, with the CLA being 0xE0,
-whilst the Avalanche app normally uses 0x80 for the CLA.
+whilst the Lux app normally uses 0x80 for the CLA.
 
 The general structure of commands and responses is as follows:
 

@@ -1,7 +1,7 @@
 import TransportNodeHid from '@ledgerhq/hw-transport-node-hid'
 import ledger_logs from '@ledgerhq/logs'
-import AvalancheApp from '@zondax/ledger-avalanche-app'
-import {DefaultWalletPolicy, WalletPolicy, PsbtV2} from '@zondax/ledger-avalanche-app'
+import LuxApp from '@zondax/ledger-lux-app'
+import {DefaultWalletPolicy, WalletPolicy, PsbtV2} from '@zondax/ledger-lux-app'
 
 const APP_DERIVATION = "m/44'/9000'/0'/0/0"
 export const BTC_PATH = "m/44'/60'/0'"
@@ -44,7 +44,7 @@ async function main() {
     ledger_logs.listen((log) => {
         console.log(`${log.type} ${log.message}`)
     });
-    const app = new AvalancheApp.default(transport);
+    const app = new LuxApp.default(transport);
 
     // await get_avax_address(app)
     await btc_tx(app)
